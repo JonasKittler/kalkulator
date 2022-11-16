@@ -5,41 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulačka</title>
+    <link rel="stylesheet" href="CSS.css">
 </head>
 <body>
-    <style>
-        .grid-container {
-            background-color: rgb(60, 255, 76);
-            padding: 10px;
-            display: grid;
-            grid-template-columns: repeat(3, auto);
-            gap: 5px;
-        }
-
-        .grid-container > div {
-            background-color: rgb(0, 47, 255);
-            text-align: center;
-            padding: 20px 0;
-            font-size: 24pt;
-        }
-        .item0 {
-            grid-column-start: 1;
-            grid-column-end: 3;
-        }
-    </style>
-</head>
-<body>
-    <div class="grid-container">
-        <div class="item1">1</div>
-        <div class="item2">2</div>
-        <div class="item3">3</div>
-        <div class="item4">4</div>
-        <div class="item5">5</div>
-        <div class="item6">6</div>
-        <div class="item7">7</div>
-        <div class="item8">8</div>
-        <div class="item9">9</div>
-        <div class="item0">0</div>
-    </div>
+    <main>
+        <section class="vysledek">
+            <input type="text" name="vysledek" placeholder="0">
+        </section>
+        <section class="tlacitka">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>-</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>+</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>·</button>
+            <button>0</button>
+            <button>:</button>
+            <button>(</button>
+            <button>)</button>
+            <button>C</button>
+            <button>=</button>
+            <button>,</button>
+            <button>◁</button>
+        </section>
+    </main>
 </body>
 </html>
