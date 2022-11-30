@@ -1,2 +1,2 @@
 # kalkulačka
-poprvé programuji takovouhle věc, takže omluvte mi prosím chyby
+poprvé programuji takovouhle věc, takže mi prosím omluvte chyby
