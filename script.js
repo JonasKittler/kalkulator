@@ -5,7 +5,7 @@ const tlacitka = document.querySelector(".tlacitka").children
 const vysledek = document.querySelector(".vysledek").childNodes[1]
 
 //pro některé funkce
-const symboly = "+-●:,"
+const symboly = "+-●:"
 const operace = ["adding", "subracting", "multiplying", "dividing"]
 
 for (const key in tlacitka) {
@@ -29,10 +29,16 @@ for (const key in tlacitka) {
                 tlacitko.addEventListener("click", () => {
                     // V inputu je nějaká hodnota a hodnota v inputu nekončí +-*/
                     if (vysledek.value != "" &&
-                        !symboly.includes(vysledek.value.charAt(vysledek.value.length - 1))) {
-                        vysledek.value += tlacitko.textContent
-                    } else if (vysledek.value == "") vysledek.value = "0."
-                })
+                    (vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("+") ||
+                    vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("-") ||
+                    vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("×") ||
+                    vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("÷")) ) {
+                    if(!symboly.includes(vysledek.value.charAt(vysledek.value.length - 1))) {
+                    vysledek.value += tlacitko.textContent }
+                    else vysledek.value += "0."
+                } else if(vysledek.value == "") vysledek.value += "0."
+                else vysledek.value += tlacitko.textContent
+            })
             // aby to mohlo počítat
         } else if(tlacitko.getAttribute("data-operation") == "calculate") {
             tlacitko.addEventListener("click", () => {
@@ -43,7 +49,7 @@ for (const key in tlacitka) {
             tlacitko.addEventListener("click", () => {
                 vysledek.value = ""
             })
-                // aby to mohlo čistit < čistit jednu vzad
+                // aby to mohlo čistit jednu vzad
             } else if(tlacitko.getAttribute("data-operation") == "clear-one") {
                 tlacitko.addEventListener("click", () => {
                      vysledek.value = vysledek.value.slice(0, -1)
