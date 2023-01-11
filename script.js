@@ -7,7 +7,9 @@ const vysledek = document.querySelector(".vysledek").childNodes[1]
 //pro některé funkce
 const symboly = "+-●:"
 const operace = ["adding", "subracting", "multiplying", "dividing"]
-
+// + k desetiné čárce
+let jeDesetinnaTecka = false
+let jeZnamenko = false
 for (const key in tlacitka) {
     if (Object.hasOwnProperty.call(tlacitka, key)) {
         const tlacitko = tlacitka[key];
