@@ -27,22 +27,24 @@ for (const key in tlacitka) {
             //desetiná čárka
         } else if(tlacitko.getAttribute("data-operation") === "decimal") {
                 tlacitko.addEventListener("click", () => {
-                    // V inputu je nějaká hodnota a hodnota v inputu nekončí +-*/
-                    if (vysledek.value != "" &&
-                    (vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("+") ||
-                    vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("-") ||
-                    vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("×") ||
-                    vysledek.value.lastIndexOf(".") < vysledek.value.lastIndexOf("÷")) ) {
-                    if(!symboly.includes(vysledek.value.charAt(vysledek.value.length - 1))) {
-                    vysledek.value += tlacitko.textContent }
-                    else vysledek.value += "0."
-                } else if(vysledek.value == "") vysledek.value += "0."
-                else vysledek.value += tlacitko.textContent
-            })
+                    if (vysledek.value != "" && !jeDesetinnaTecka &&
+                        (vysledek.value.charAt(vysledek.value.length-1) != "(" ||
+                        vysledek.value.charAt(vysledek.value.length-1) != ")")) {
+                        if(!jeZnamenko) {
+                            vysledek.value += tlacitko.textContent 
+                        } else {
+                            vysledek.value += "0."
+                        }
+                        jeZnamenko = false
+                    } else if(vysledek.value == "") {
+                        vysledek.value = "0."
+                    }
+                    jeDesetinnaTecka = true
+                }) 
             // aby to mohlo počítat
         } else if(tlacitko.getAttribute("data-operation") == "calculate") {
             tlacitko.addEventListener("click", () => {
-                vysledek.value = eval(vysledek.value.replace("●", "*").replace(":", "/").replace(",", "."))
+                vysledek.value = eval(vysledek.value.replace(/●/g, "*").replace(/:/g, "/").replace(/,/g, "."))
             })
             // aby to mohlo čistit C
         } else if(tlacitko.getAttribute("data-operation") == "clear") {
